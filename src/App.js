@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Initial from "./pages/initial.tsx";
+import { Switch, Route } from "react-router-dom";
+import Login from "./pages/login.tsx";
+import SignUp from "./pages/sign-up.tsx";
+import ProductsList from "./pages/products-list.tsx";
+import ShoppingCart from "./pages/shopping-cart.tsx";
+import FinishedOrder from "./pages/finished-order.tsx";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route path="/" exact>
+          <Initial />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+        <Route path="/sign-up" exact>
+          <SignUp />
+        </Route>
+        <Route path="/products-list" exact>
+          <ProductsList />
+        </Route>
+        <Route path="/shopping-cart" exact>
+          <ShoppingCart />
+        </Route>
+        <Route path="/finished-order" exact>
+          <FinishedOrder />
+        </Route>
+      </Switch>
     </div>
   );
 }
