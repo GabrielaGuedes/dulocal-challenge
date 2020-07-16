@@ -4,7 +4,7 @@ import {
   StyledPage,
   CardsContainer,
   Card,
-} from "../components/initial-screen/initial.style.ts";
+} from "../components/initial-screen/initial.style";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import Text from "antd/lib/typography/Text";
