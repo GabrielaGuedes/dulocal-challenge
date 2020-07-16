@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const StyledPage = styled.div`
-  height: 100%;
-  padding: 30px 40px;
-  background-color: #f8e8c9;
-`;
-
 export const StyledTitle = styled.div`
   font-size: 80px;
   font-weight: bold;

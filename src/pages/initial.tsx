@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   StyledTitle,
-  StyledPage,
   CardsContainer,
   Card,
 } from "../components/initial-screen/initial.style";
@@ -16,7 +15,7 @@ const TEXT_STYLE = {
 
 const Initial: React.FC = () => {
   return (
-    <StyledPage>
+    <Fragment>
       <StyledTitle>Loja de Tudo</StyledTitle>
       <CardsContainer>
         <Card>
@@ -36,7 +35,7 @@ const Initial: React.FC = () => {
           </Link>
         </Card>
       </CardsContainer>
-    </StyledPage>
+    </Fragment>
   );
 };
 
