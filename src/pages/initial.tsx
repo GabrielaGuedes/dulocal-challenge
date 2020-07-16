@@ -22,17 +22,21 @@ const Initial: React.FC = () => {
           <Text strong style={TEXT_STYLE}>
             Já sou cliente
           </Text>
-          <Link to="/login">
-            <Button>Entrar</Button>
-          </Link>
+          <div>
+            <Button danger type="primary">
+              <Link to="/login">Entrar</Link>
+            </Button>
+          </div>
         </Card>
         <Card>
           <Text strong style={TEXT_STYLE}>
             Quero comprar pela primeira vez
           </Text>
-          <Link to="/sign-up">
-            <Button>Cadastrar-se</Button>
-          </Link>
+          <div>
+            <Button danger type="primary">
+              <Link to="/sign-up">Cadastrar-se</Link>
+            </Button>
+          </div>
         </Card>
       </CardsContainer>
     </Fragment>
