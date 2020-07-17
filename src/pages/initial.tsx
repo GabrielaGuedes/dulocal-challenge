@@ -7,9 +7,10 @@ import {
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import Text from "antd/lib/typography/Text";
+import { COLORS } from "../ui-constants/colors";
 
 const TEXT_STYLE = {
-  color: "#79122f",
+  color: COLORS.red,
   fontSize: 20,
 };
 

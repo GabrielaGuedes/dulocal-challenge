@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../../ui-constants/colors";
 
 export const ProductsListContainer = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const StyledProductCard = styled.div`
   margin: 5px;
   display: flex;
   flex-direction: column;
-  background-color: #f7a827;
+  background-color: ${COLORS.orange};
   padding-bottom: 10px;
 `;
 
@@ -27,12 +28,12 @@ export const AddToCartContainer = styled.div`
 export const ProductName = styled.div`
   font-size: 20px;
   font-weight: 600;
-  color: #79122f;
+  color: ${COLORS.red};
   margin-bottom: 10px;
 `;
 
 export const Price = styled.div`
   font-size: 20px;
   font-weight: 600;
-  color: #1d7f35;
+  color: ${COLORS.green};
 `;

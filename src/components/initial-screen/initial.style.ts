@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { COLORS } from "../../ui-constants/colors";
 
 export const StyledTitle = styled.div`
   font-size: 80px;
   font-weight: bold;
-  color: #1d7f35;
+  color: ${COLORS.green};
 `;
 
 export const CardsContainer = styled.div`
@@ -15,8 +16,8 @@ export const CardsContainer = styled.div`
 export const Card = styled.div`
   width: 100%;
   margin: 0px 10px;
-  background-color: #f7a827;
-  color: #79122f;
+  background-color: ${COLORS.orange};
+  color: ${COLORS.red};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
