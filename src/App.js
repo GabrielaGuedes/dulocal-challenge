@@ -11,7 +11,6 @@ import ShoppingCartIcon from "./components/common/shopping-cart-icon";
 
 function App() {
   const [productsInCart, setProductsInCart] = useState([]);
-  console.log(productsInCart);
   return (
     <div className="App">
       <Switch>
