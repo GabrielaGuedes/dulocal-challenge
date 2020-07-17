@@ -7,7 +7,7 @@ import SignUp from "./pages/sign-up.tsx";
 import ProductsList from "./pages/products-list.tsx";
 import ShoppingCart from "./pages/shopping-cart.tsx";
 import FinishedOrder from "./pages/finished-order.tsx";
-import ShoppingCartIcon from "./components/ui/shopping-cart-icon";
+import ShoppingCartIcon from "./components/common/shopping-cart-icon";
 
 function App() {
   const [productIdsInCart, setProductIdsInCart] = useState([]);

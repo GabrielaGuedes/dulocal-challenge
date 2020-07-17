@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import styled from "styled-components";
 import Text from "antd/lib/typography/Text";
-
-const ShoppingCartIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+import {
+  ShoppingCartIconBlock,
+  ShoppingCartIconContainer,
+} from "./shopping-cart-icon.style";
 
 interface IShoppingCartIcon {
   productsInCart: number;
@@ -15,7 +13,7 @@ interface IShoppingCartIcon {
 
 const ShoppingCartIcon: React.FC<IShoppingCartIcon> = ({ productsInCart }) => {
   return (
-    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+    <ShoppingCartIconBlock>
       <Link to="/shopping-cart">
         <ShoppingCartIconContainer>
           <ShoppingCartOutlined style={{ fontSize: 30 }} />
@@ -24,7 +22,7 @@ const ShoppingCartIcon: React.FC<IShoppingCartIcon> = ({ productsInCart }) => {
           </Text>
         </ShoppingCartIconContainer>
       </Link>
-    </div>
+    </ShoppingCartIconBlock>
   );
 };
 
