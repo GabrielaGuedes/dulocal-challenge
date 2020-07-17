@@ -1,10 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { getRequestInJSON } from "../utils/request";
-import {
-  Title,
-  ProductsListContainer,
-} from "../components/products-list-screen/product-list.style";
+import { ProductsListContainer } from "../components/products-list-screen/products-list.style";
 import ProductCard from "../components/products-list-screen/product-card";
+import { Title } from "../components/common/title";
 
 export interface IProduct {
   id: string;

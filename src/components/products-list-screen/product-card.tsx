@@ -6,7 +6,7 @@ import {
   ProductCardDescriptionContainer,
   AddToCartContainer,
   Price,
-} from "./product-list.style";
+} from "./products-list.style";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Tooltip, Button } from "antd";
 

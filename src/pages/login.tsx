@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
-import { StyledLoginTitle, Card } from "../components/login-screen/login.style";
+import { Card } from "../components/login-screen/login.style";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
+import { Title } from "../components/common/title";
 
 const CREDENTIALS = {
   email: "cliente@gmail.com",
@@ -38,7 +39,7 @@ const Login: React.FC = () => {
 
   return (
     <Fragment>
-      <StyledLoginTitle>Entrar</StyledLoginTitle>
+      <Title>Entrar</Title>
       <Card>
         <Form {...layout} name="login" initialValues={{ remember: true }}>
           <Form.Item

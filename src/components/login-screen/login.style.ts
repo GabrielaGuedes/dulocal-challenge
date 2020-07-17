@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const StyledLoginTitle = styled.div`
-  color: #1d7f35;
-  font-size: 40px;
-  font-weight: bold;
-`;
-
 export const Card = styled.div`
   margin: 30px 25% 0px;
   background-color: #f8e8c9;
