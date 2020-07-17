@@ -10,7 +10,8 @@ import FinishedOrder from "./pages/finished-order.tsx";
 import ShoppingCartIcon from "./components/common/shopping-cart-icon";
 
 function App() {
-  const [productIdsInCart, setProductIdsInCart] = useState([]);
+  const [productsInCart, setProductsInCart] = useState([]);
+  console.log(productsInCart);
   return (
     <div className="App">
       <Switch>
@@ -24,16 +25,16 @@ function App() {
           <SignUp />
         </Route>
         <Route path="/products-list" exact>
-          <ShoppingCartIcon productsInCart={productIdsInCart.length} />
-          <ProductsList setProductIdsInCart={setProductIdsInCart} />
+          <ShoppingCartIcon productsInCart={productsInCart.length} />
+          <ProductsList setProductsInCart={setProductsInCart} />
         </Route>
         <Route path="/shopping-cart" exact>
-          <ShoppingCartIcon productsInCart={productIdsInCart.length} />
-          <ShoppingCart setProductIdsInCart={setProductIdsInCart} />
+          <ShoppingCartIcon productsInCart={productsInCart.length} />
+          <ShoppingCart setProductsInCart={setProductsInCart} />
         </Route>
         <Route path="/finished-order" exact>
-          <ShoppingCartIcon productsInCart={productIdsInCart.length} />
-          <FinishedOrder setProductIdsInCart={setProductIdsInCart} />
+          <ShoppingCartIcon productsInCart={productsInCart.length} />
+          <FinishedOrder setProductsInCart={setProductsInCart} />
         </Route>
       </Switch>
     </div>

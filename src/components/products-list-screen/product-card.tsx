@@ -12,14 +12,14 @@ import { Tooltip, Button } from "antd";
 
 interface IProductCard {
   product: IProduct;
-  setProductIdsInCart: (productIds: any) => void;
+  setProductsInCart: (products: any) => void;
 }
 
-const Product: React.FC<IProductCard> = ({ product, setProductIdsInCart }) => {
+const Product: React.FC<IProductCard> = ({ product, setProductsInCart }) => {
   const handleClick = () => {
-    setProductIdsInCart((productIdsInCart: string[]) => [
-      ...productIdsInCart,
-      product.id,
+    setProductsInCart((productsInCart: string[]) => [
+      ...productsInCart,
+      product,
     ]);
   };
 

@@ -14,13 +14,13 @@ export interface IProduct {
 }
 
 interface IProductsList {
-  setProductIdsInCart: (productIds: any) => void;
+  setProductsInCart: (products: any) => void;
 }
 
 const PRODUCTS_SOURCE =
   "https://5d6da1df777f670014036125.mockapi.io/api/v1/product";
 
-const ProductsList: React.FC<IProductsList> = ({ setProductIdsInCart }) => {
+const ProductsList: React.FC<IProductsList> = ({ setProductsInCart }) => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const ProductsList: React.FC<IProductsList> = ({ setProductIdsInCart }) => {
         {products.map((product) => (
           <ProductCard
             product={product}
-            setProductIdsInCart={setProductIdsInCart}
+            setProductsInCart={setProductsInCart}
           />
         ))}
       </ProductsListContainer>

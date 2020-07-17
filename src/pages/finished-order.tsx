@@ -1,10 +1,10 @@
 import React from "react";
 
 interface IFinishedOrder {
-  setProductIdsInCart: (productIds: any) => void;
+  setProductsInCart: (products: any) => void;
 }
 
-const FinishedOrder: React.FC<IFinishedOrder> = ({ setProductIdsInCart }) => {
+const FinishedOrder: React.FC<IFinishedOrder> = ({ setProductsInCart }) => {
   return <h1>Finished order screen</h1>;
 };
 
