@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Initial from "./pages/initial.tsx";
 import { Switch, Route } from "react-router-dom";
@@ -7,8 +7,10 @@ import SignUp from "./pages/sign-up.tsx";
 import ProductsList from "./pages/products-list.tsx";
 import ShoppingCart from "./pages/shopping-cart.tsx";
 import FinishedOrder from "./pages/finished-order.tsx";
+import ShoppingCartIcon from "./components/ui/shopping-cart-icon";
 
 function App() {
+  const [productIdsInCart, setProductIdsInCart] = useState([]);
   return (
     <div className="App">
       <Switch>
@@ -22,13 +24,16 @@ function App() {
           <SignUp />
         </Route>
         <Route path="/products-list" exact>
-          <ProductsList />
+          <ShoppingCartIcon productsInCart={productIdsInCart.length} />
+          <ProductsList setProductIdsInCart={setProductIdsInCart} />
         </Route>
         <Route path="/shopping-cart" exact>
-          <ShoppingCart />
+          <ShoppingCartIcon productsInCart={productIdsInCart.length} />
+          <ShoppingCart setProductIdsInCart={setProductIdsInCart} />
         </Route>
         <Route path="/finished-order" exact>
-          <FinishedOrder />
+          <ShoppingCartIcon productsInCart={productIdsInCart.length} />
+          <FinishedOrder setProductIdsInCart={setProductIdsInCart} />
         </Route>
       </Switch>
     </div>

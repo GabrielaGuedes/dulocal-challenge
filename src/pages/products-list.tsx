@@ -1,6 +1,10 @@
 import React from "react";
 
-const ProductsList: React.FC = () => {
+interface IProductsList {
+  setProductIdsInCart: (productIds: any) => void;
+}
+
+const ProductsList: React.FC<IProductsList> = ({ setProductIdsInCart }) => {
   return <h1>Products List screen</h1>;
 };
 

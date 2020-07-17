@@ -1,6 +1,10 @@
 import React from "react";
 
-const ShoppingCart: React.FC = () => {
+interface IShoppingCart {
+  setProductIdsInCart: (productIds: any) => void;
+}
+
+const ShoppingCart: React.FC<IShoppingCart> = ({ setProductIdsInCart }) => {
   return <h1>Shopping cart screen</h1>;
 };
 
