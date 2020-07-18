@@ -3,6 +3,7 @@ import { getRequestInJSON } from "../utils/request";
 import { ProductsListContainer } from "../components/products-list-screen/products-list.style";
 import ProductCard from "../components/products-list-screen/product-card";
 import { Title } from "../components/common/title";
+import ShoppingCartIcon from "../components/common/shopping-cart-icon";
 
 export interface IProduct {
   id: string;
@@ -13,15 +14,14 @@ export interface IProduct {
   stock: number;
 }
 
-interface IProductsList {
-  setProductsInCart: (products: any) => void;
-}
-
 const PRODUCTS_SOURCE =
   "https://5d6da1df777f670014036125.mockapi.io/api/v1/product";
 
-const ProductsList: React.FC<IProductsList> = ({ setProductsInCart }) => {
+const ProductsList: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [productsInCart, setProductsInCart] = useState(
+    JSON.parse(localStorage.getItem("productsInCart") || "[]")
+  );
 
   useEffect(() => {
     getRequestInJSON(PRODUCTS_SOURCE).then((products: IProduct[]) =>
@@ -31,6 +31,7 @@ const ProductsList: React.FC<IProductsList> = ({ setProductsInCart }) => {
 
   return (
     <Fragment>
+      <ShoppingCartIcon productsInCart={productsInCart.length} />
       <Title>Nossos Produtos</Title>
       <ProductsListContainer>
         {products.map((product) => (

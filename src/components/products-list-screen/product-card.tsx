@@ -17,10 +17,13 @@ interface IProductCard {
 
 const Product: React.FC<IProductCard> = ({ product, setProductsInCart }) => {
   const handleClick = () => {
-    setProductsInCart((productsInCart: string[]) => [
-      ...productsInCart,
-      product,
-    ]);
+    setProductsInCart((productsInCart: string[]) => {
+      localStorage.setItem(
+        "productsInCart",
+        JSON.stringify([...productsInCart, product])
+      );
+      return [...productsInCart, product];
+    });
   };
 
   return (
