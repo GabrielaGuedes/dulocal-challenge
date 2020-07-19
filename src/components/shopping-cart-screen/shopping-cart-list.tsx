@@ -1,25 +1,27 @@
 import React, { Fragment } from "react";
-import { Button } from "antd";
 import {
   ListItemContainer,
   ItemImageNameQuantityContainer,
   ItemNameQuantityContainer,
   ItemNameContainer,
-  ItemQuantityContainer,
   ItemPriceContainer,
 } from "./shopping-cart.style";
+import ItemQuantity from "./item-quantity";
+import { IProductInShoppingCartList } from "../../pages/shopping-cart";
 
 interface IShoppingCartList {
-  productsWithItsQuantity: [];
+  productsWithItsQuantity: IProductInShoppingCartList[];
+  setSumPrice: (price: string) => void;
 }
 
 const ShoppingCartList: React.FC<IShoppingCartList> = ({
   productsWithItsQuantity,
+  setSumPrice,
 }) => {
   return (
     <Fragment>
-      {productsWithItsQuantity.map((product: any) => (
-        <ListItemContainer>
+      {productsWithItsQuantity.map((product: IProductInShoppingCartList) => (
+        <ListItemContainer key={product.id + product.name}>
           <ItemImageNameQuantityContainer>
             <img
               src={product.image}
@@ -29,26 +31,7 @@ const ShoppingCartList: React.FC<IShoppingCartList> = ({
             />
             <ItemNameQuantityContainer>
               <ItemNameContainer>{product.name}</ItemNameContainer>
-              <ItemQuantityContainer>
-                Quantidade:{" "}
-                <Button
-                  style={{ margin: "0px 5px 0px 10px" }}
-                  shape="circle"
-                  size="small"
-                  type="primary"
-                >
-                  -
-                </Button>
-                {product.quantity}
-                <Button
-                  style={{ marginLeft: 5 }}
-                  shape="circle"
-                  size="small"
-                  type="primary"
-                >
-                  +
-                </Button>
-              </ItemQuantityContainer>
+              <ItemQuantity product={product} setSumPrice={setSumPrice} />
             </ItemNameQuantityContainer>
           </ItemImageNameQuantityContainer>
           <ItemPriceContainer>R$ {product.price}</ItemPriceContainer>
