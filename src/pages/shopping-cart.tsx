@@ -3,7 +3,7 @@ import { Title } from "../components/common/title";
 import groupBy from "lodash/groupBy";
 import forEach from "lodash/forEach";
 import ShoppingCartList from "../components/shopping-cart-screen/shopping-cart-list";
-import PaymentMethodWithFinishButton from "../components/shopping-cart-screen/payment-method-with-finish-button";
+import PaymentMethodWithButtons from "../components/shopping-cart-screen/payment-method-with-buttons";
 import { TotalPriceContainer } from "../components/shopping-cart-screen/shopping-cart.style";
 
 export interface IProductInShoppingCartList {
@@ -52,7 +52,7 @@ const ShoppingCart: React.FC = () => {
         Total: R$
         {sumPrice}
       </TotalPriceContainer>
-      <PaymentMethodWithFinishButton />
+      <PaymentMethodWithButtons />
     </Fragment>
   );
 };

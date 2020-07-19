@@ -13,7 +13,7 @@ const AVAILABLE_PAYMENT_METHODS = [
   },
 ];
 
-const PaymentMethodWithFinishButton: React.FC = () => {
+const PaymentMethodWithButtons: React.FC = () => {
   useEffect(() => {
     localStorage.setItem("paymentMethod", "");
   }, []);
@@ -47,7 +47,10 @@ const PaymentMethodWithFinishButton: React.FC = () => {
             `As informações de pagamento por ${paymentMethod.toLowerCase()} serão
       enviadas por e-mail.`}
         </Row>
-        <Button type="primary" htmlType="submit">
+        <Button danger style={{ marginRight: 10 }}>
+          <Link to="/products-list">Voltar e continuar comprando</Link>
+        </Button>
+        <Button danger type="primary" htmlType="submit">
           {localStorage.getItem("paymentMethod") !== "" ? (
             <Link to="/finished-order">Finalizar pedido</Link>
           ) : (
@@ -59,4 +62,4 @@ const PaymentMethodWithFinishButton: React.FC = () => {
   );
 };
 
-export default PaymentMethodWithFinishButton;
+export default PaymentMethodWithButtons;
