@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Card } from "../components/login-screen/login.style";
 import { Form, Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Title } from "../components/common/title";
 
 const CREDENTIALS = {
@@ -18,38 +18,32 @@ const tailLayout = {
 };
 
 const Login: React.FC = () => {
-  const [validEmail, setValidEmail] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
-
-  const validateEmail = (_rule: any, value: any) => {
-    setValidEmail(value === CREDENTIALS.email);
-  };
-
-  const validatePassword = (_rule: any, value: any) => {
-    setValidPassword(value === CREDENTIALS.password);
-  };
-
-  const onClick = () => {
-    if (!validEmail) {
-      alert("Email não cadastrado");
-    } else if (validEmail && !validPassword) {
-      alert("Senha inválida");
-    }
-  };
+  const history = useHistory();
 
   return (
     <Fragment>
       <Title>Entrar</Title>
       <Card>
-        <Form {...layout} name="login" initialValues={{ remember: true }}>
+        <Form
+          {...layout}
+          name="login"
+          initialValues={{ remember: true }}
+          onFinish={() => history.replace("/products-list")}
+        >
           <Form.Item
             label="E-mail"
             name="email"
             rules={[
-              {
-                validator: validateEmail,
-              },
+              () => ({
+                validator(_rule, value) {
+                  if (value === CREDENTIALS.email) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject("E-mail não cadastrado");
+                },
+              }),
             ]}
+            validateTrigger="onSubmit"
           >
             <Input />
           </Form.Item>
@@ -57,17 +51,23 @@ const Login: React.FC = () => {
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ validator: validatePassword }]}
+            rules={[
+              () => ({
+                validator(_rule, value) {
+                  if (value === CREDENTIALS.password) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject("Senha incorreta");
+                },
+              }),
+            ]}
+            validateTrigger="onSubmit"
           >
             <Input.Password />
           </Form.Item>
           <Form.Item {...tailLayout}>
-            <Button htmlType="submit" onClick={onClick} danger type="primary">
-              {validEmail && validPassword ? (
-                <Link to="/products-list">Entrar</Link>
-              ) : (
-                "Entrar"
-              )}
+            <Button htmlType="submit" danger type="primary">
+              Entrar
             </Button>
           </Form.Item>
         </Form>

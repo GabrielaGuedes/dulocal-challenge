@@ -35,6 +35,7 @@ const SignUp: React.FC = () => {
               { type: "email", message: "E-mail inválido" },
               { required: true, message: "Campo obrigatório" },
             ]}
+            validateTrigger="onBlur"
           >
             <Input />
           </Form.Item>
@@ -84,6 +85,7 @@ const SignUp: React.FC = () => {
                 },
               }),
             ]}
+            validateTrigger="onBlur"
           >
             <Input type="number" />
           </Form.Item>
