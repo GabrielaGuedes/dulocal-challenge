@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Title } from "../components/common/title";
 import { Form, Input, Button, DatePicker } from "antd";
 import { isCpfValid } from "../utils/cpf-validator";
@@ -15,12 +15,22 @@ const tailLayout = {
 
 const SignUp: React.FC = () => {
   const history = useHistory();
+  const isLogged = localStorage.getItem("logged") === "true";
+
+  useEffect(() => {
+    isLogged && history.replace("/products-list");
+  }, []);
+
+  const handleFinish = () => {
+    localStorage.setItem("logged", "true");
+    history.replace("/products-list");
+  };
 
   return (
     <Fragment>
       <Title>Cadastre-se!</Title>
       <Card>
-        <Form {...layout} onFinish={() => history.replace("/products-list")}>
+        <Form {...layout} onFinish={handleFinish}>
           <Form.Item
             label="Nome"
             name="name"

@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import {
   StyledTitle,
   CardsContainer,
   Card,
 } from "../components/initial-screen/initial.style";
 import { Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Text from "antd/lib/typography/Text";
 import { COLORS } from "../ui-constants/colors";
 
@@ -15,6 +15,13 @@ const TEXT_STYLE = {
 };
 
 const Initial: React.FC = () => {
+  const history = useHistory();
+  const isLogged = localStorage.getItem("logged") === "true";
+
+  useEffect(() => {
+    isLogged && history.replace("/products-list");
+  }, []);
+
   return (
     <Fragment>
       <StyledTitle>Loja de Tudo</StyledTitle>

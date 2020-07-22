@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Card } from "../components/login-screen/login.style";
 import { Form, Input, Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -19,6 +19,16 @@ const tailLayout = {
 
 const Login: React.FC = () => {
   const history = useHistory();
+  const isLogged = localStorage.getItem("logged") === "true";
+
+  useEffect(() => {
+    isLogged && history.replace("/products-list");
+  }, []);
+
+  const handleFinish = () => {
+    localStorage.setItem("logged", "true");
+    history.replace("/products-list");
+  };
 
   return (
     <Fragment>
@@ -28,7 +38,7 @@ const Login: React.FC = () => {
           {...layout}
           name="login"
           initialValues={{ remember: true }}
-          onFinish={() => history.replace("/products-list")}
+          onFinish={handleFinish}
         >
           <Form.Item
             label="E-mail"
