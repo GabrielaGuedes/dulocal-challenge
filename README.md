@@ -4,6 +4,6 @@ I have used here:
 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [Lodash](https://lodash.com/)
-- [Antd](ant.design)
+- [Antd](https://ant.design)
 - [React router](https://reactrouter.com/)
 - [Styled componentes](https://styled-components.com/)
