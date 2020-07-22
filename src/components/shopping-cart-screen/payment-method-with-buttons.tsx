@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Select, Row, Col, Button, Form } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const AVAILABLE_PAYMENT_METHODS = [
   {
@@ -14,20 +14,26 @@ const AVAILABLE_PAYMENT_METHODS = [
 ];
 
 const PaymentMethodWithButtons: React.FC = () => {
-  useEffect(() => {
-    localStorage.setItem("paymentMethod", "");
-  }, []);
+  const history = useHistory();
+  const productsInCart = JSON.parse(
+    localStorage.getItem("productsInCart") || "[]"
+  );
 
   const [paymentMethod, setPaymentMethod] = useState("");
 
   const handleChange = (_value: string, option: any) => {
-    localStorage.setItem("paymentMethod", option.label);
     setPaymentMethod(option.label);
+  };
+
+  const handleFinish = () => {
+    productsInCart.length > 0
+      ? history.replace("/finished-order")
+      : alert("Seu carrinho está vazio!");
   };
 
   return (
     <Col style={{ justifyContent: "flex-start", paddingLeft: 30 }}>
-      <Form>
+      <Form onFinish={handleFinish}>
         <Row align="middle">
           <Form.Item
             label="Método de pagamento"
@@ -51,11 +57,7 @@ const PaymentMethodWithButtons: React.FC = () => {
           <Link to="/products-list">Voltar e continuar comprando</Link>
         </Button>
         <Button danger type="primary" htmlType="submit">
-          {localStorage.getItem("paymentMethod") !== "" ? (
-            <Link to="/finished-order">Finalizar pedido</Link>
-          ) : (
-            "Finalizar pedido"
-          )}
+          Finalizar pedido
         </Button>
       </Form>
     </Col>
